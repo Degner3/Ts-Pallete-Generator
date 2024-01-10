@@ -30,8 +30,9 @@ export default function Homepage() {
             Your new colors
         </h1>
         <div>
-          {colors && colors.map(color => (
+          {colors && colors.map((color, index) => (
             <div
+            key={color + index}
             style={{
               backgroundColor: color,
               height: 20,
