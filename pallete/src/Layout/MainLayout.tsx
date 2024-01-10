@@ -10,7 +10,6 @@ export const MainLayout = () => {
         <main className={style.layout}>
             <div className={style.contentwrapper}>
                 <div className={style.content}>
-                    <h3>aæsfjæafj</h3>
                     <Outlet/>
                 </div>
 
