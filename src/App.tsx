@@ -1,16 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { MainLayout } from './Layout/MainLayout'
-import Navbar from './components/Navbar'
+import Homepage from './Layout/Homepage'
+import Pallette from './Layout/Pallette'
 
 function App() {
  
 
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<MainLayout/>}></Route>
+        <Route path="/" element={<Homepage/>} />
+        <Route path="/palletes" element={<Pallette />} />
       </Routes>
     </BrowserRouter>
   )
