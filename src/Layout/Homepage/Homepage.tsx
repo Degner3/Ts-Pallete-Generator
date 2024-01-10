@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import style from "./Homepage.module.scss"
 import { useColors } from '../../store/useColors'
+import Button from '../../components/Button'
 
 export default function Homepage() {
     const {setColor, currentColors} = useColors()
@@ -49,6 +50,16 @@ export default function Homepage() {
               
             </div>
           ))}
+        </div>
+        <div
+        className={style.buttonGroup}
+        >
+          <Button>
+            Generate
+          </Button>
+          <Button>
+            Save
+          </Button>
         </div>
     </div>
   )
