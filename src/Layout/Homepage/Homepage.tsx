@@ -4,7 +4,7 @@ import { useColors } from '../../store/useColors'
 import Button from '../../components/Button'
 
 export default function Homepage() {
-    const {setColor, currentColors, saveColor} = useColors()
+    const {setColor, currentColors, saveColor, savedColors} = useColors()
 
     const fetchData = async () => {
       const url = 'http://colormind.io/api/'
