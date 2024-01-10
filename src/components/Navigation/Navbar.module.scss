@@ -46,13 +46,14 @@
                     // border-image: linear-gradient(to right, #ff0000, #00ff00, #0000ff);
                     // border-image-slice: 1;
                     display: inline-block;
-                    
-                    -webkit-animation: color-change 1s infinite;
-                    -moz-animation: color-change 1s infinite;
-                    -o-animation: color-change 1s infinite;
-                    -ms-animation: color-change 1s infinite;
-                    animation: color-change 1s infinite;
+                    transition: opacity 0.2s ease-in-out;
+
+                    &:hover{
+                        opacity: 0.5;
+                    }
                 }
+
+                
             }
         }
 
