@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import rgbHex from 'rgb-hex'
 import style from "./Homepage.module.scss"
-import { useColors } from '../../store/useColors'
+import { useColors } from '../store/useColors'
 
 export default function Homepage() {
     const {setColor, currentColors} = useColors()

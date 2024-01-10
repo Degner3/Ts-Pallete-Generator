@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Homepage from './Layout/Homepage'
-import Pallette from './Layout/Pallette'
+import Pallette from './Layout/Pallette/Pallette'
 
 function App() {
  
