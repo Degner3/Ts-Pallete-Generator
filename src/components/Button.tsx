@@ -1,6 +1,6 @@
 import React from 'react'
 import { useColors } from '../store/useColors'
-
+import style from "./Button.module.scss"
 
 import { FC } from 'react'
 
@@ -12,6 +12,7 @@ const Button: FC<ButtonProps> = ({...props}) => {
     const { currentColors } = useColors()
   return (
     <button
+    className={style.button}
     style={{
         backgroundColor: "transparent", 
         color: "white",

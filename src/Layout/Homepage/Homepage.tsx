@@ -4,7 +4,7 @@ import { useColors } from '../../store/useColors'
 import Button from '../../components/Button'
 
 export default function Homepage() {
-    const {setColor, currentColors} = useColors()
+    const {setColor, currentColors, saveColor} = useColors()
 
     const fetchData = async () => {
       const url = 'http://colormind.io/api/'
@@ -54,10 +54,14 @@ export default function Homepage() {
         <div
         className={style.buttonGroup}
         >
-          <Button>
+          <Button
+          onClick={fetchData}
+          >
             Generate
           </Button>
-          <Button>
+          <Button
+          onClick={saveColor}
+          >
             Save
           </Button>
         </div>
