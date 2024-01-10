@@ -1,10 +1,12 @@
 .nav {
+    width: 100%;
     background-color: var(--1e1e1e);
     border-bottom: 1px solid #CF9407;
     box-shadow: 0px 0px 8px 2px #CF9407;
 
 
     .navwrapper {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -15,33 +17,41 @@
         h2 {
             color: #CF9407;
             font-weight: 400;
-            font-size: 2rem;
             line-height: 37.41px;
-            // text-align: center;
+            text-align: center;
+            min-width: 194px;
+            font-size: clamp(1.25rem, 5vw, 2rem);
         }
     
         ul {
-            margin: 0 auto;
+            // margin: 0 auto;
             display: flex;
             gap: 34px;
-            margin-right: 133px;
+            // margin-right: 133px;
             list-style-type: none;
     
             li {
                 
                 a {
-                    color: var(--ededed);
+                    // color: var(--ededed);
                     font-family: var(--karla);
                     text-decoration: none;
                     font-weight: 400;
-                    font-size: 1rem;
+                    font-size: clamp(0.875rem, 0vw, 1rem);
                     line-height: 18.7px;
                     text-align: center;
                     cursor: pointer;
-                    padding: 6px 15px;
-                    border: 2px solid transparent;
-                    border-image: linear-gradient(to right, #ff0000, #00ff00, #0000ff);
-                    border-image-slice: 1; 
+                    // padding: 6px 15px;
+                    // border: 2px solid transparent;
+                    // border-image: linear-gradient(to right, #ff0000, #00ff00, #0000ff);
+                    // border-image-slice: 1;
+                    display: inline-block;
+                    
+                    -webkit-animation: color-change 1s infinite;
+                    -moz-animation: color-change 1s infinite;
+                    -o-animation: color-change 1s infinite;
+                    -ms-animation: color-change 1s infinite;
+                    animation: color-change 1s infinite;
                 }
             }
         }
@@ -49,5 +59,24 @@
 
     }
 
+    @media screen and (max-width: 650px) {
+
+        .navwrapper {
+
+            h2 {
+                line-height: 23.38px;
+            }
+
+            ul {
+                gap: 10px;
+            }
+        }
+        
+    }
+
     
 }
+
+
+
+
