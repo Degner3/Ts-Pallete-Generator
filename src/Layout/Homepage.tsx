@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import rgbHex from 'rgb-hex'
+import style from "./Homepage.module.scss"
+import { useColors } from '../store/useColors'
 
 export default function Homepage() {
-    const [colors, setColors] = useState<string[]>([])
+    const {setColor, currentColors} = useColors()
 
     const fetchData = async () => {
       const url = 'http://colormind.io/api/'
@@ -14,9 +16,7 @@ export default function Homepage() {
       })
 
       let { result: data } = await res.json()
-      data = data.map((color: number[]) => "#" + rgbHex(color[0], color[1], color[2]))
-      console.log(data);
-      setColors(data)
+      setColor(data)
     }
     
     useEffect(() => {
@@ -25,18 +25,27 @@ export default function Homepage() {
     
 
   return (
-    <div>
-        <h1>
+    <div
+    className={style.content}
+    >
+        <h1
+        key={currentColors ? `colored ${currentColors[0]}`: "not colored"}
+        style={{
+            background: currentColors[0] ? `-webkit-linear-gradient(0deg, ${currentColors[0]} 26.79%, ${currentColors[2]} 49.8%,${currentColors[4]} 70.09%)` : "white",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent"
+        }}
+        >
             Your new colors
         </h1>
-        <div>
-          {colors && colors.map((color, index) => (
+        <div
+        className={style.colors}
+        >
+          {currentColors && currentColors.map((color, index) => (
             <div
             key={color + index}
             style={{
               backgroundColor: color,
-              height: 20,
-              width: 20
             }}
             >
               
