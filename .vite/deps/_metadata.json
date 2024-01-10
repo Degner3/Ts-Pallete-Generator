@@ -1,8 +1,49 @@
 {
-  "hash": "73b9d17a",
+  "hash": "08d7ce00",
   "configHash": "be3abfdf",
-  "lockfileHash": "e3b0c442",
-  "browserHash": "91d4facd",
-  "optimized": {},
-  "chunks": {}
+  "lockfileHash": "7d6bb361",
+  "browserHash": "0f30dd2f",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "cc3d1124",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "e6b3adf7",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "152d5f5c",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "6c606881",
+      "needsInterop": false
+    },
+    "rgb-hex": {
+      "src": "../../node_modules/rgb-hex/index.js",
+      "file": "rgb-hex.js",
+      "fileHash": "0b6adb52",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-4ASWBRZ3": {
+      "file": "chunk-4ASWBRZ3.js"
+    },
+    "chunk-O6O4HUXW": {
+      "file": "chunk-O6O4HUXW.js"
+    },
+    "chunk-LQ2VYIYD": {
+      "file": "chunk-LQ2VYIYD.js"
+    }
+  }
 }
