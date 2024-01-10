@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import style from "./Homepage.module.scss"
 import { useColors } from '../../store/useColors'
-import Button from '../../components/Button'
+import Button from '../../components/Button/Button'
 
 export default function Homepage() {
     const {setColor, currentColors, saveColor} = useColors()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useColors } from '../store/useColors'
+import { useColors } from '../../store/useColors'
 import style from "./Button.module.scss"
 
 import { FC } from 'react'
