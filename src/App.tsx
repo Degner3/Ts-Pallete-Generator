@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { MainLayout } from './Layout/MainLayout'
-import Homepage from './Layout/Homepage/Homepage'
 import Pallette from './Layout/Pallette/Pallette'
 import Navbar from './components/Navigation/Navbar'
+import Homepage from './Layout/Homepage/Homepage'
+
 
 function App() {
  
