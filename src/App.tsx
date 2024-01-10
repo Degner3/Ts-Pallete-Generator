@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { MainLayout } from './Layout/MainLayout'
-import Homepage from './Layout/Homepage'
-import Pallette from './Layout/Pallette'
+import Homepage from './Layout/Homepage/Homepage'
+import Pallette from './Layout/Pallette/Pallette'
 
 function App() {
  
