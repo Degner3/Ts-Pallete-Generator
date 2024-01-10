@@ -1,6 +1,4 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import rgbHex from 'rgb-hex'
+import { useEffect } from 'react'
 import style from "./Homepage.module.scss"
 import { useColors } from '../../store/useColors'
 
