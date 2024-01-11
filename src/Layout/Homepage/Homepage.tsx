@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import style from "./Homepage.module.scss"
 import { useColors } from '../../store/useColors'
+import rgbHex from 'rgb-hex'
 import Button from '../../components/Button/Button'
 
 export default function Homepage() {
-    const {setColor, currentColors, saveColor} = useColors()
+    const {setColor, currentColors, saveColor, savedColors} = useColors()
 
     const fetchData = async () => {
       const url = 'http://colormind.io/api/'
@@ -15,10 +16,13 @@ export default function Homepage() {
       })
 
       let { result: data } = await res.json()
-      setColor(data)
+      const hexColors = data.map((color: number[]) => "#" + rgbHex(color[0], color[1], color[2]))
+      setColor(hexColors)
     }
     
     useEffect(() => {
+      if(currentColors[0]) return
+
       fetchData()
     }, [])
     
