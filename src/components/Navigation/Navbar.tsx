@@ -11,6 +11,8 @@ export default function Navbar() {
     { link: "pallete", page: "My Palettes" },
   ];
 
+  
+
 
 
   return (
