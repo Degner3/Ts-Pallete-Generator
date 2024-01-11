@@ -46,26 +46,7 @@ export default function Pallette() {
               <Button onClick={() => handleDelete(colors)}>Delete</Button>
             </div>
         </div>
-          
         ))}
-
-        {/* {savedColors.map((colors, i) => (
-          <div key={i} className={style.colors} style={{
-            backgroundColor: "transparent",
-            borderBottom: "2px solid transparent",
-            borderImage: currentColors[0]
-              ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
-              : "white",
-          }}>
-            {colors.map((color, i) => (
-              <div key={i} style={{ backgroundColor: color }}></div>
-            ))}
-            <div className={style.buttonGroup}>
-              <Button>Set active</Button>
-              <Button onClick={() => handleDelete(colors)}>Delete</Button>
-            </div>
-          </div>
-        ))} */}
       </div>
     </section>
   );
