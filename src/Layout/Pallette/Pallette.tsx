@@ -42,7 +42,11 @@ export default function Pallette() {
             ))}
           </div>
           <div className={style.buttonGroup}>
-              <Button>Set active</Button>
+              <Button
+              onClick={() => setColor(colors)}
+              >
+                Set active
+              </Button>
               <Button onClick={() => handleDelete(colors)}>Delete</Button>
             </div>
         </div>
