@@ -4,12 +4,11 @@ import style from "./Palette.module.scss"
 
 export default function Pallette() {
 
-  const {setColor, savedColors, deleteColor, currentColors, saveColor} = useColors()
+  const { setColor, savedColors, deleteColor, currentColors } = useColors();
 
   const handleDelete = (colors) => {
     deleteColor(colors);
-  }
-  
+  }  
 
 
   
@@ -27,9 +26,37 @@ export default function Pallette() {
       >
         My Palettes
       </h1>
-      <div className={style.container}>
-        {savedColors.map((colors, index) => (
-          <div key={index} className={style.colors}>
+      <div className={style.containerWrapper}>
+
+      {savedColors.map((colors, i) => (
+        <div className={style.container} style={{
+          backgroundColor: "transparent",
+          borderBottom: "2px solid transparent",
+          borderImage: currentColors[0]
+            ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+            : "white",
+        }}>
+          <div key={i} className={style.colors}>
+            {colors.map((color, i) => (
+              <div key={i} style={{ backgroundColor: color }}></div>
+            ))}
+          </div>
+          <div className={style.buttonGroup}>
+              <Button>Set active</Button>
+              <Button onClick={() => handleDelete(colors)}>Delete</Button>
+            </div>
+        </div>
+          
+        ))}
+
+        {/* {savedColors.map((colors, i) => (
+          <div key={i} className={style.colors} style={{
+            backgroundColor: "transparent",
+            borderBottom: "2px solid transparent",
+            borderImage: currentColors[0]
+              ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+              : "white",
+          }}>
             {colors.map((color, i) => (
               <div key={i} style={{ backgroundColor: color }}></div>
             ))}
@@ -38,12 +65,7 @@ export default function Pallette() {
               <Button onClick={() => handleDelete(colors)}>Delete</Button>
             </div>
           </div>
-        ))}
-
-        {/* <div className={style.buttonGroup}>
-          <Button>Set active</Button>
-          <Button>Delete</Button>
-        </div> */}
+        ))} */}
       </div>
     </section>
   );
