@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = ({...props}) => {
         color: "white",
         fontSize: "20px",
         padding: "10px 30px",
-        border: "3px solid transparent",
+        border: "2px solid transparent",
         borderImage: currentColors[0] ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1` : "white",
     }}
     {...props}
