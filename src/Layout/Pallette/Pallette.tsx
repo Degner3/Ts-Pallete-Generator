@@ -39,7 +39,7 @@ export default function Pallette() {
               <Button
               onClick={() => setActive(colors)}
               >
-                Set active
+                {activeColor[0] === colors[0] ? "Active" : "Set Active"}
               </Button>
               <Button onClick={() =>deleteColor(colors)}>Delete</Button>
             </div>
