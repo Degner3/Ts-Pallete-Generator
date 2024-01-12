@@ -5,27 +5,27 @@ import { FaPlus } from "react-icons/fa";
 
 
 export default function Accordion() {
-    const {currentColors} = useColors()
+    const {activeColor} = useColors()
     const [open, setOpen] = useState(false)
 
   return (
     <div
     className={style.accordion}
     style={{
-        backgroundColor: currentColors[0] + "20"
+        backgroundColor: activeColor[0] + "20"
     }}
     >
         <div
         className={style.top}
         onClick={() => setOpen(!open)}
         style={{
-            borderBottom: open ? `1px solid ${currentColors[0]}60` : ""
+            borderBottom: open ? `1px solid ${activeColor[0]}60` : ""
         }}
         >
             <h3>Lorem ipsum</h3>
             <FaPlus 
             style={{
-                color: currentColors[1]
+                color: activeColor[1]
             }}
             />
         </div>

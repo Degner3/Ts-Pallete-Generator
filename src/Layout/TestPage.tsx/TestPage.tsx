@@ -5,7 +5,7 @@ import Faq from '../../components/Faq/Faq'
 import ReviewCard from '../../components/ReviewCard/ReviewCard'
 
 export default function TestPage() {
-    const {currentColors} = useColors()
+    const {activeColor} = useColors()
   return (
     <div
     className={style.container}
@@ -15,12 +15,12 @@ export default function TestPage() {
         >
             <h1>
                 Visualize Your <br />
-                <span style={{color: currentColors[0]}}>Colors</span> & <i>Fonts</i> <br />
+                <span style={{color: activeColor[0]}}>Colors</span> & <i>Fonts</i> <br />
                 On a Real Site
             </h1>
             <div
             style={{
-                backgroundColor: currentColors[0]
+                backgroundColor: activeColor[0]
             }}
             />
         </header>
@@ -37,14 +37,14 @@ export default function TestPage() {
                 <article
                 className={style.card}
                 style={{
-                    backgroundColor: currentColors[0] + "20",
+                    backgroundColor: activeColor[0] + "20",
                 }}
                 key={`test-card-${index}`}
                 >
                     <div
                     className={style.icon}
                     style={{
-                        backgroundColor: currentColors[1],
+                        backgroundColor: activeColor[1],
                     }}
                     />
                     <h3>

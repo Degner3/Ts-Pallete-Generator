@@ -4,11 +4,11 @@ import { useColors } from '../../store/useColors'
 import { FaStar } from 'react-icons/fa'
 
 export default function ReviewCard() {
-    const {currentColors} = useColors()
+    const {activeColor} = useColors()
   return (
     <article
     style={{
-        backgroundColor: currentColors[0] + "20"
+        backgroundColor: activeColor[0] + "20"
     }}
     className={style.card}
     >
@@ -18,7 +18,7 @@ export default function ReviewCard() {
             <div
             className={style.icon}
             style={{
-                backgroundColor: currentColors[1]
+                backgroundColor: activeColor[1]
             }}
             />
             <div>
@@ -38,7 +38,7 @@ export default function ReviewCard() {
         <div
         className={style.rating}
         style={{
-            color: currentColors[2]
+            color: activeColor[2]
         }}
         >
             <FaStar />

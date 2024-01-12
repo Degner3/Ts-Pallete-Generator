@@ -4,15 +4,15 @@ import style from "./Palette.module.scss"
 
 export default function Pallette() {
 
-  const { setColor, savedColors, deleteColor, currentColors } = useColors(); 
+  const { setActive, savedColors, deleteColor, activeColor } = useColors(); 
   
   return (
     <section className={style.content}>
       <h1
-        key={currentColors ? `colored ${currentColors[0]}` : "not colored"}
+        key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
         style={{
-          background: currentColors[0]
-            ? `-webkit-linear-gradient(0deg, ${currentColors[0]} 26.79%, ${currentColors[2]} 49.8%,${currentColors[4]} 70.09%)`
+          background: activeColor[0]
+            ? `-webkit-linear-gradient(0deg, ${activeColor[0]} 26.79%, ${activeColor[2]} 49.8%,${activeColor[4]} 70.09%)`
             : "white",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
@@ -26,8 +26,8 @@ export default function Pallette() {
         <div className={style.container} style={{
           backgroundColor: "transparent",
           borderBottom: "2px solid transparent",
-          borderImage: currentColors[0]
-            ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+          borderImage: activeColor[0]
+            ? `linear-gradient(to right, ${activeColor[0]}, ${activeColor[4]}) 1`
             : "white",
         }}>
           <div key={i} className={style.colors}>
@@ -37,7 +37,7 @@ export default function Pallette() {
           </div>
           <div className={style.buttonGroup}>
               <Button
-              onClick={() => setColor(colors)}
+              onClick={() => setActive(colors)}
               >
                 Set active
               </Button>

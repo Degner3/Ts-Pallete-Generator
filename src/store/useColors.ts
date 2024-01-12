@@ -4,8 +4,10 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware'
 
 interface ColorState {
     currentColors: string[]
+    activeColor: string[]
     savedColors: string[][]
     setColor: (colors: string[]) => void
+    setActive: (colors: string[]) => void
     saveColor: () => void,
     deleteColor: (colors: string[]) => void
 }
@@ -15,6 +17,14 @@ export const useColors = create(
         (set, get) => ({
             currentColors: [],
             savedColors: [],
+            activeColor: [],
+            setActive: (colors) =>  {
+
+                set((state) => ({
+                    ...state,
+                    activeColor: colors
+                }))
+            },
             setColor: (colors) => {
                 
         
