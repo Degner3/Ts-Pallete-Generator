@@ -6,7 +6,7 @@ export default function Pallette() {
 
   const { setColor, savedColors, deleteColor, currentColors } = useColors();
 
-  const handleDelete = (colors) => {
+  const handleDelete = (colors: string[]) => {
     deleteColor(colors);
   }  
 
