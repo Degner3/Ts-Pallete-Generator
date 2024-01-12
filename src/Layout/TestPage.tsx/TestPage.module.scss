@@ -53,3 +53,32 @@
         }
     }
 }
+
+@media (max-width: 500px) {
+    .container{
+        .hero{
+            flex-direction: column;
+            h1{
+                width: 100%;
+            }
+            div{
+                width: 100%; 
+                aspect-ratio: 2/1;
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .container{
+        .cards{
+            .cardsContainer{
+                display: flex;
+                flex-wrap: wrap;
+                .card{
+                    min-width: 150px;
+                }
+            }
+        }
+    }
+}
