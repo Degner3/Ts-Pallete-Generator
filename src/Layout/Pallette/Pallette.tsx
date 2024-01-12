@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import Button from "../../components/Button/Button"
 import { useColors } from "../../store/useColors"
 import style from "./Palette.module.scss"
@@ -5,6 +6,32 @@ import style from "./Palette.module.scss"
 export default function Pallette() {
 
   const { setActive, savedColors, deleteColor, activeColor } = useColors(); 
+
+  const handleSetActive = (colors: string[]) => {
+    setActive(colors)
+    toast("Color Activated",{
+      style: {
+        backgroundColor: "#212121", 
+        color: "white",
+        borderRadius: 0,
+        border: "2px solid transparent",
+        borderImage: colors[0] ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1` : "white",
+      }
+    })
+  }
+
+  const handleDelete = (colors: string[]) => {
+    deleteColor(colors)
+    toast("Color Activated",{
+      style: {
+        backgroundColor: "#212121", 
+        color: "white",
+        borderRadius: 0,
+        border: "2px solid transparent",
+        borderImage: activeColor[0] ? `linear-gradient(to right, ${activeColor[0]}, ${activeColor[4]}) 1` : "white",
+      }
+    })
+  }
   
   return (
     <section className={style.content}>
@@ -37,11 +64,11 @@ export default function Pallette() {
           </div>
           <div className={style.buttonGroup}>
               <Button
-              onClick={() => setActive(colors)}
+              onClick={() => handleSetActive(colors)}
               >
                 {activeColor[0] === colors[0] ? "Active" : "Set Active"}
               </Button>
-              <Button onClick={() =>deleteColor(colors)}>Delete</Button>
+              <Button onClick={() => handleDelete(colors)}>Delete</Button>
             </div>
         </div>
         ))}

@@ -3,6 +3,8 @@ import style from "./Homepage.module.scss"
 import { useColors } from '../../store/useColors'
 import rgbHex from 'rgb-hex'
 import Button from '../../components/Button/Button'
+import { toast } from 'sonner'
+import { CustomToast } from '../../components/CustomToast'
 
 export default function Homepage() {
     const {setColor, currentColors, saveColor, savedColors} = useColors()
@@ -25,6 +27,23 @@ export default function Homepage() {
 
       fetchData()
     }, [])
+
+    const handleFetch = () => {
+      fetchData()
+    }
+
+    const handleSave = () => {
+      saveColor()
+      toast("Saved color",{
+        style: {
+          backgroundColor: "#212121", 
+          color: "white",
+          borderRadius: 0,
+          border: "2px solid transparent",
+          borderImage: currentColors[0] ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1` : "white",
+        }
+      })
+    }
     
 
   return (
@@ -59,12 +78,12 @@ export default function Homepage() {
         className={style.buttonGroup}
         >
           <Button
-          onClick={fetchData}
+          onClick={handleFetch}
           >
             Generate
           </Button>
           <Button
-          onClick={saveColor}
+          onClick={handleSave}
           >
             Save
           </Button>
