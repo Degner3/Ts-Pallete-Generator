@@ -4,13 +4,7 @@ import style from "./Palette.module.scss"
 
 export default function Pallette() {
 
-  const { setColor, savedColors, deleteColor, currentColors } = useColors();
-
-  const handleDelete = (colors) => {
-    deleteColor(colors);
-  }  
-
-
+  const { setColor, savedColors, deleteColor, currentColors } = useColors(); 
   
   return (
     <section className={style.content}>
@@ -47,7 +41,7 @@ export default function Pallette() {
               >
                 Set active
               </Button>
-              <Button onClick={() => handleDelete(colors)}>Delete</Button>
+              <Button onClick={() =>deleteColor(colors)}>Delete</Button>
             </div>
         </div>
         ))}
