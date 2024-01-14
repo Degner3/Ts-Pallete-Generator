@@ -9,6 +9,7 @@ export default function Navbar() {
   const navArr = [
     { link: "/", page: "Random Pallette" },
     { link: "pallete", page: "My Palettes" },
+    { link: "testpage", page: "TestPage" },
   ];
 
   
