@@ -77,7 +77,7 @@
 
 
                 .colors {
-                    // grid-template-columns: 1fr 1fr;
+                    grid-template-columns: 1fr 1fr;
                 }
 
                 .buttonGroup {
@@ -98,7 +98,8 @@
         
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 500px) {
+        
 
         .containerWrapper {
 
