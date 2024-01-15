@@ -95,7 +95,7 @@ export default function Pallette() {
               <Button
               onClick={() => handleSetActive(colors)}
               >
-                Set active
+                {colors[0] === activeColor[0] ? "Active" : "Set active"}
               </Button>
               <Button 
               onClick={() => handleDelete(colors)}
@@ -105,6 +105,15 @@ export default function Pallette() {
             </div>
         </div>
         ))}
+        {!savedColors.length && (
+          <div
+          className={style.fail}
+          >
+            <p>
+              You haven't saved any colors yet :(
+            </p>
+          </div>
+        )}
         </div>
     </section>
   );

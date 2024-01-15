@@ -22,8 +22,8 @@ export default function Navbar() {
 
   const navArr = [
     { link: "/", page: "Random Pallette" },
-    { link: "pallete", page: "My Palettes" },
-    { link: "testpage", page: "TestPage" },
+    { link: "/pallete", page: "My Palettes" },
+    { link: "/test", page: "TestPage" },
   ];
 
   useEffect(() => {
@@ -41,7 +41,8 @@ export default function Navbar() {
     }}
     >
       <div className={style.navwrapper}>
-        <h2 key={colors ? ` colored ${colors[0]}` : "not colored"}
+        <h2
+          key={colors ? ` colored ${colors[0]}` : "not colored"}
           style={{
             background:
               colors && colors.length >= 2
@@ -54,11 +55,6 @@ export default function Navbar() {
         >
           Colorizer Pallete Genereator
         </h2>
-        <div className={style.mobileMenu} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
         <div className={style.mobileMenu} onClick={toggleMenu} style={{
                   backgroundColor: "transparent",
                   color: "#ededed",
