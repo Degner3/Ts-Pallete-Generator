@@ -95,7 +95,7 @@ export default function Pallette() {
               <Button
               onClick={() => handleSetActive(colors)}
               >
-                Set active
+                {colors[0] === activeColor[0] ? "Active" : "Set active"}
               </Button>
               <Button 
               onClick={() => handleDelete(colors)}
