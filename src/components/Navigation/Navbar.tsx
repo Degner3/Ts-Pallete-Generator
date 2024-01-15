@@ -1,15 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import { useColors } from "../../store/useColors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
 
 
-
-
-
 export default function Navbar() {
-  const { currentColors } = useColors();
+  const [colors, setColors] = useState<string[]>([])
+  const { currentColors, activeColor } = useColors();
+  const location = useLocation() 
+  console.log(location);
+  
 
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
 
@@ -24,24 +25,36 @@ export default function Navbar() {
     { link: "testpage", page: "TestPage" },
   ];
 
-  // const activeStyle = ({ isActive, isPending }) => {
-  //   return {
-  //     backgroundColor: isActive ? "#1d4ed8" : isPending ? "yellow" : "",
-  //     color: isActive ? "#ffffff" : isPending ? "#000000" : "",
-  //     textDecoration: isActive ? "none" : "",
-  //   };
-  // };
+  useEffect(() => {
+    setColors(location.pathname === "/" ? currentColors : activeColor)
 
+  }, [location, currentColors, activeColor])
   
 
-
-
   return (
-    <nav className={style.nav}>
+    <nav 
+    className={style.nav}
+    style={{
+      borderBottom: `1px solid ${colors[0]}`,
+      boxShadow: `0px 0px 8px 2px ${colors[0]}`
+    }}
+    >
       <div className={style.navwrapper}>
         <h2
+
           key={currentColors ? ` colored ${currentColors[0]}` : "not colored"}
          
+
+          key={colors ? ` colored ${colors[0]}` : "not colored"}
+          style={{
+            background:
+              colors && colors.length >= 2
+                ? `-webkit-linear-gradient(0deg, ${colors[0]} 0%, ${colors[4]} 100%)`
+                : "white",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+
         >
           Colorizer Pallete Genereator
         </h2>
@@ -68,8 +81,8 @@ export default function Navbar() {
                   fontSize: "16px",
                   padding: "6px 15px",
                   border: "2px solid transparent",
-                  borderImage: currentColors[0]
-                    ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+                  borderImage: colors[0]
+                    ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1`
                     : "white",
                 }}
               >
