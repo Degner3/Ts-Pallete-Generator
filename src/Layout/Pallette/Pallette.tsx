@@ -1,26 +1,61 @@
+import { toast } from "sonner";
 import Button from "../../components/Button/Button"
 import { useColors } from "../../store/useColors"
 import style from "./Palette.module.scss"
 
 export default function Pallette() {
 
+
   const { setColor, savedColors, deleteColor, currentColors } = useColors();
 
   const handleDelete = (colors: string[]) => {
     deleteColor(colors);
   }  
+  
+  const { setActive, savedColors, deleteColor, activeColor } = useColors(); 
 
 
+  const handleSetActive = (colors: string[]) => {
+    setActive(colors)
+    toast("Color Activated",{
+      style: {
+        backgroundColor: "#212121", 
+        color: "white",
+        borderRadius: 0,
+        border: "2px solid transparent",
+        borderImage: colors[0] ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1` : "white",
+      }
+    })
+  }
+
+  const handleDelete = (colors: string[]) => {
+    deleteColor(colors)
+    toast("Color Activated",{
+      style: {
+        backgroundColor: "#212121", 
+        color: "white",
+        borderRadius: 0,
+        border: "2px solid transparent",
+        borderImage: activeColor[0] ? `linear-gradient(to right, ${activeColor[0]}, ${activeColor[4]}) 1` : "white",
+      }
+    })
+  }
   
   return (
     <section className={style.content}>
+
       <h1 key={currentColors ? `colored ${currentColors[0]}` : "not colored"}
+
+      <h1
+        key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
+
         style={{
-          background: currentColors[0]
-            ? `-webkit-linear-gradient(0deg, ${currentColors[0]} 26.79%, ${currentColors[2]} 49.8%,${currentColors[4]} 70.09%)`
+          background: activeColor[0]
+            ? `-webkit-linear-gradient(0deg, ${activeColor[0]} 26.79%, ${activeColor[2]} 49.8%,${activeColor[4]} 70.09%)`
             : "white",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
+
         }}>My Palettes</h1>
         <div className={style.containerWrapper}>
         {savedColors.map((colors, i) => (
@@ -30,6 +65,20 @@ export default function Pallette() {
             borderBottom: "2px solid transparent",
             borderImage: currentColors[0]
             ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+
+        }}
+      >
+        My Palettes
+      </h1>
+      <div className={style.containerWrapper}>
+
+      {savedColors.map((colors, i) => (
+        <div className={style.container} style={{
+          backgroundColor: "transparent",
+          borderBottom: "2px solid transparent",
+          borderImage: activeColor[0]
+            ? `linear-gradient(to right, ${activeColor[0]}, ${activeColor[4]}) 1`
+
             : "white",
             }}>
             {colors.map((color, i) => (
@@ -37,7 +86,11 @@ export default function Pallette() {
             ))}
           </div>
           <div className={style.buttonGroup}>
-              <Button>Set active</Button>
+              <Button
+              onClick={() => handleSetActive(colors)}
+              >
+                {activeColor[0] === colors[0] ? "Active" : "Set Active"}
+              </Button>
               <Button onClick={() => handleDelete(colors)}>Delete</Button>
             </div>
         </div>

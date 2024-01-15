@@ -1,0 +1,16 @@
+.accordion{
+    margin-bottom: 10px;
+    user-select: none;
+    border-radius: 10px;
+    .top{
+        padding: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .bottom{
+        padding: 20px;
+    }
+}
