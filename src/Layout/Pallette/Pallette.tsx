@@ -105,6 +105,15 @@ export default function Pallette() {
             </div>
         </div>
         ))}
+        {!savedColors.length && (
+          <div
+          className={style.fail}
+          >
+            <p>
+              You haven't saved any colors yet :(
+            </p>
+          </div>
+        )}
         </div>
     </section>
   );
