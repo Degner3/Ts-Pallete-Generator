@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import { useColors } from "../../store/useColors";
 import { useEffect, useState } from "react";
+import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
 
 
 export default function Navbar() {
@@ -11,12 +12,18 @@ export default function Navbar() {
   console.log(location);
   
 
+  const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+
+  }
+
   const navArr = [
     { link: "/", page: "Random Pallette" },
-    { link: "pallete", page: "My Palettes" },
+    { link: "/pallete", page: "My Palettes" },
+    { link: "/test", page: "TestPage" },
   ];
-
-
 
   useEffect(() => {
     setColors(location.pathname === "/" ? currentColors : activeColor)
@@ -43,10 +50,23 @@ export default function Navbar() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
+
         >
           Colorizer Pallete Genereator
         </h2>
-        <ul>
+        <div className={style.mobileMenu} onClick={toggleMenu} style={{
+                  backgroundColor: "transparent",
+                  color: "#ededed",
+                  fontSize: "16px",
+                  padding: "6px 15px",
+                  border: "2px solid transparent",
+                  borderImage: currentColors[0]
+                    ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+                    : "white",
+                }}>
+          {isMenuOpen ? <FaDoorOpen/> : <FaDoorClosed/>}
+        </div>
+        <ul className={isMenuOpen ? style.open : ""}>
           {navArr.map((item, i) => (
             <li key={i}>
               <NavLink
