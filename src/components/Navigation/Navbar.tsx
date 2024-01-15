@@ -2,8 +2,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import { useColors } from "../../store/useColors";
 import { useEffect, useState } from "react";
-import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
-
+// import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoClose } from "react-icons/io5";
 
 export default function Navbar() {
   const [colors, setColors] = useState<string[]>([])
@@ -62,11 +63,15 @@ export default function Navbar() {
                   border: "2px solid transparent",
                   borderImage: currentColors[0]
                     ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
-                    : "white",
+                    : "#ededed",
                 }}>
-          {isMenuOpen ? <FaDoorOpen/> : <FaDoorClosed/>}
+          {isMenuOpen ? <IoClose /> : <RxHamburgerMenu />}
         </div>
-        <ul className={isMenuOpen ? style.open : ""}>
+        <ul className={isMenuOpen ? style.open : ""} 
+        style={isMenuOpen ? {
+          borderBottom: `1px solid ${colors[0]}`,
+          boxShadow: `0px 10px 8px 0px ${colors[0]}`
+      } : {}}>
           {navArr.map((item, i) => (
             <li key={i}>
               <NavLink
