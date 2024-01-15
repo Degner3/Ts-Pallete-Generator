@@ -19,7 +19,6 @@ export const useColors = create(
             savedColors: [],
             activeColor: [],
             setActive: (colors) =>  {
-
                 set((state) => ({
                     ...state,
                     activeColor: colors

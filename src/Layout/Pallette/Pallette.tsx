@@ -22,7 +22,7 @@ export default function Pallette() {
 
   const handleDelete = (colors: string[]) => {
     deleteColor(colors)
-    toast("Color Activated",{
+    toast("Color Deleted",{
       style: {
         backgroundColor: "#212121", 
         color: "white",
