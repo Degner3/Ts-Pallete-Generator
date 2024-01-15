@@ -5,7 +5,15 @@ import style from "./Palette.module.scss"
 
 export default function Pallette() {
 
+
+  const { setColor, savedColors, deleteColor, currentColors } = useColors();
+
+  const handleDelete = (colors: string[]) => {
+    deleteColor(colors);
+  }  
+  
   const { setActive, savedColors, deleteColor, activeColor } = useColors(); 
+
 
   const handleSetActive = (colors: string[]) => {
     setActive(colors)
@@ -35,14 +43,29 @@ export default function Pallette() {
   
   return (
     <section className={style.content}>
+
+      <h1 key={currentColors ? `colored ${currentColors[0]}` : "not colored"}
+
       <h1
         key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
+
         style={{
           background: activeColor[0]
             ? `-webkit-linear-gradient(0deg, ${activeColor[0]} 26.79%, ${activeColor[2]} 49.8%,${activeColor[4]} 70.09%)`
             : "white",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
+
+        }}>My Palettes</h1>
+        <div className={style.containerWrapper}>
+        {savedColors.map((colors, i) => (
+        <div className={style.palleteContainer}>
+          <div key={i} className={style.colors}  style={{
+            backgroundColor: "transparent",
+            borderBottom: "2px solid transparent",
+            borderImage: currentColors[0]
+            ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
+
         }}
       >
         My Palettes
@@ -55,9 +78,9 @@ export default function Pallette() {
           borderBottom: "2px solid transparent",
           borderImage: activeColor[0]
             ? `linear-gradient(to right, ${activeColor[0]}, ${activeColor[4]}) 1`
+
             : "white",
-        }}>
-          <div key={i} className={style.colors}>
+            }}>
             {colors.map((color, i) => (
               <div key={i} style={{ backgroundColor: color }}></div>
             ))}
@@ -72,7 +95,7 @@ export default function Pallette() {
             </div>
         </div>
         ))}
-      </div>
+        </div>
     </section>
   );
 }
