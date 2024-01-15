@@ -73,6 +73,7 @@
     @media screen and (max-width: 900px) {
 
         .navwrapper {
+            
 
             h2 {
                 line-height: 23.38px;
@@ -100,7 +101,19 @@
                 justify-content: center;
                 align-items: flex-end;
                 padding-right: 1rem;
+                animation: openAnimation 0.5s ease-in-out;
+
             }
+              @keyframes openAnimation {
+                0% {
+                  width: 0;
+                  opacity: 0;
+                }
+                100% {
+                  width: 100%;
+                  opacity: 1;
+                }
+              }
         }
         
     }
