@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = ({...props}) => {
     <button
     className={style.button}
     style={{
-        backgroundColor: "transparent", 
+        backgroundColor: "#1e1e1e", 
         color: "white",
         fontSize: "20px",
         padding: "10px 30px",

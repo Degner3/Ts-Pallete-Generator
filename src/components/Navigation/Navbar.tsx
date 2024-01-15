@@ -40,7 +40,8 @@ export default function Navbar() {
     }}
     >
       <div className={style.navwrapper}>
-        <h2 key={colors ? ` colored ${colors[0]}` : "not colored"}
+        <h2
+          key={colors ? ` colored ${colors[0]}` : "not colored"}
           style={{
             background:
               colors && colors.length >= 2
