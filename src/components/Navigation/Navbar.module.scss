@@ -87,17 +87,19 @@
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
-                top: 100px;
+                top: 70px;
                 left: 0;
                 background-color: var(--212121);
                 display: none;
             }
 
             ul.open {
+                height: 20%;
+                background-color: var(--1e1e1e);
                 display: flex;
-                justify-content: flex-end;
+                justify-content: center;
                 align-items: flex-end;
-                padding-right: 10px;
+                padding-right: 1rem;
             }
         }
         

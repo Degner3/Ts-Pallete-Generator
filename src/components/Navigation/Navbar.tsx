@@ -2,8 +2,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import { useColors } from "../../store/useColors";
 import { useEffect, useState } from "react";
-import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
-
+// import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoClose } from "react-icons/io5";
 
 export default function Navbar() {
   const [colors, setColors] = useState<string[]>([])
@@ -40,12 +41,7 @@ export default function Navbar() {
     }}
     >
       <div className={style.navwrapper}>
-        <h2
-
-          key={currentColors ? ` colored ${currentColors[0]}` : "not colored"}
-         
-
-          key={colors ? ` colored ${colors[0]}` : "not colored"}
+        <h2 key={colors ? ` colored ${colors[0]}` : "not colored"}
           style={{
             background:
               colors && colors.length >= 2
@@ -58,6 +54,11 @@ export default function Navbar() {
         >
           Colorizer Pallete Genereator
         </h2>
+        <div className={style.mobileMenu} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div className={style.mobileMenu} onClick={toggleMenu} style={{
                   backgroundColor: "transparent",
                   color: "#ededed",
@@ -66,11 +67,15 @@ export default function Navbar() {
                   border: "2px solid transparent",
                   borderImage: currentColors[0]
                     ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
-                    : "white",
+                    : "#ededed",
                 }}>
-          {isMenuOpen ? <FaDoorOpen/> : <FaDoorClosed/>}
+          {isMenuOpen ? <IoClose /> : <RxHamburgerMenu />}
         </div>
-        <ul className={isMenuOpen ? style.open : ""}>
+        <ul className={isMenuOpen ? style.open : ""} 
+        style={isMenuOpen ? {
+          borderBottom: `1px solid ${colors[0]}`,
+          boxShadow: `0px 10px 8px 0px ${colors[0]}`
+      } : {}}>
           {navArr.map((item, i) => (
             <li key={i}>
               <NavLink
