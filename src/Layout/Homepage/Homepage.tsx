@@ -4,7 +4,8 @@ import { useColors } from '../../store/useColors'
 import rgbHex from 'rgb-hex'
 import Button from '../../components/Button/Button'
 import { toast } from 'sonner'
-import { CustomToast } from '../../components/CustomToast'
+import Clipboard from "../../assets/Clipboard.png"
+
 
 export default function Homepage() {
     const {setColor, currentColors, saveColor, savedColors} = useColors()
@@ -44,6 +45,19 @@ export default function Homepage() {
         }
       })
     }
+
+    const handleCopy = (color: string) => {
+      navigator.clipboard.writeText(color)
+      toast(`Copied ${color} to clipboard`,{
+        style: {
+          backgroundColor: "#212121", 
+          color: "white",
+          borderRadius: 0,
+          border: "2px solid transparent",
+          borderImage: currentColors[0] ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1` : "white",
+        }
+      })
+    }
     
 
   return (
@@ -64,13 +78,28 @@ export default function Homepage() {
         className={style.colors}
         >
           {currentColors && currentColors.map((color, index) => (
-            <div
-            key={color + index}
-            style={{
-              backgroundColor: color,
-            }}
-            >
-              
+            <div>
+              <div
+              key={color + index}
+              style={{
+                backgroundColor: color,
+              }}
+              />
+              <div
+                className={style.copyArea}
+                >
+                <button
+                onClick={() => handleCopy(color)}
+                >
+                  <span>
+                    {color}
+                  </span>
+                  <img 
+                  src={Clipboard} 
+                  alt="" 
+                  />
+                </button>
+              </div>
             </div>
           ))}
         </div>
