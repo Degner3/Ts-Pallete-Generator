@@ -72,7 +72,17 @@
                 }
             }
 
+        }
 
+        .deleteAllButton {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            // display: inline-block;
+
+            button {
+                width: 100%;
+            }
         }
 
         .copyArea{
@@ -162,6 +172,15 @@
 
                 }
             }
+
+            .deleteAllButton {
+    
+                button {
+                    width: 100%;
+                    font-size: 1.1rem;
+                    padding: 10px 30px;
+                }
+            }
         }
         
     }
@@ -193,6 +212,16 @@
                         padding: 10px 20px;
                     }
 
+                }
+
+            }
+
+            .deleteAllButton {
+    
+                button {
+                    width: 100%;
+                    font-size: 1rem;
+                    padding: 10px 20px;
                 }
             }
         }

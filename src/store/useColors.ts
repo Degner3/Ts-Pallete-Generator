@@ -10,6 +10,7 @@ interface ColorState {
     setActive: (colors: string[]) => void
     saveColor: () => void,
     deleteColor: (colors: string[]) => void
+    deleteAllColors: () => void
 }
 
 export const useColors = create(
@@ -62,6 +63,9 @@ export const useColors = create(
                     savedColors: [...state.savedColors, currentColors]
                 }))
             },
+            deleteAllColors: () => {
+                set({ savedColors: [] });
+              },
         }),
         {
             name: "colors",
