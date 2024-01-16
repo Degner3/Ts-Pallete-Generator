@@ -58,12 +58,11 @@ export default function Navbar() {
         <div className={style.mobileMenu} onClick={toggleMenu} style={{
                   backgroundColor: "transparent",
                   color: "#ededed",
-                  fontSize: "16px",
-                  padding: "6px 15px",
+                  padding: "6px 10px",
                   border: "2px solid transparent",
-                  borderImage: currentColors[0]
-                    ? `linear-gradient(to right, ${currentColors[0]}, ${currentColors[4]}) 1`
-                    : "#ededed",
+                  borderImage: colors[0]
+                    ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1`
+                    : "ededed",
                 }}>
           {isMenuOpen ? <IoClose /> : <RxHamburgerMenu />}
         </div>
