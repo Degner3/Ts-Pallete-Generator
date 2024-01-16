@@ -20,8 +20,8 @@ const Button: FC<ButtonProps> = ({...props}) => {
     style={{
         backgroundColor: "#1e1e1e", 
         color: "white",
-        fontSize: "20px",
-        padding: "10px 30px",
+        // fontSize: "20px",
+        // padding: "10px 30px",
         border: "2px solid transparent",
         borderImage: colors[0] ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1` : "white",
     }}

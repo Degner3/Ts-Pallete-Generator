@@ -1,24 +1,15 @@
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import { useColors } from "../../store/useColors";
-import { useEffect, useState } from "react";
-// import { FaDoorOpen, FaDoorClosed } from "react-icons/fa6";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 
 export default function Navbar() {
-  const [colors, setColors] = useState<string[]>([])
+  const [colors, setColors] = useState<string[]>([]);
   const { currentColors, activeColor } = useColors();
-  const location = useLocation() 
-  console.log(location);
-  
-
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-
-  }
 
   const navArr = [
     { link: "/", page: "Random Pallette" },
@@ -26,19 +17,36 @@ export default function Navbar() {
     { link: "/test", page: "TestPage" },
   ];
 
-  useEffect(() => {
-    setColors(location.pathname === "/" ? currentColors : activeColor)
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
-  }, [location, currentColors, activeColor])
-  
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    setColors(location.pathname === "/" ? currentColors : activeColor);
+
+    const handleOutsideClick = () => {
+      closeMenu();
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [location, currentColors, activeColor]);
 
   return (
-    <nav 
-    className={style.nav}
-    style={{
-      borderBottom: `1px solid ${colors[0]}`,
-      boxShadow: `0px 0px 8px 2px ${colors[0]}`
-    }}
+    <nav
+      className={style.nav}
+      style={{
+        borderBottom: `1px solid ${colors[0]}`,
+        boxShadow: `0px 0px 8px 2px ${colors[0]}`,
+      }}
     >
       <div className={style.navwrapper}>
         <h2
@@ -51,26 +59,30 @@ export default function Navbar() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
-
         >
           Colorizer Pallete Genereator
         </h2>
-        <div className={style.mobileMenu} onClick={toggleMenu} style={{
-                  backgroundColor: "transparent",
-                  color: "#ededed",
-                  padding: "6px 10px",
-                  border: "2px solid transparent",
-                  borderImage: colors[0]
-                    ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1`
-                    : "ededed",
-                }}>
+        <div
+          className={style.mobileMenu}
+          onClick={toggleMenu}
+          style={{
+            backgroundColor: "transparent",
+            color: "#ededed",
+            padding: "6px 10px",
+            border: "2px solid transparent",
+            borderImage: colors[0]
+              ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1`
+              : "ededed",
+          }}
+        >
           {isMenuOpen ? <IoClose /> : <RxHamburgerMenu />}
         </div>
-        <ul className={isMenuOpen ? style.open : ""} 
-        style={isMenuOpen ? {
-          borderBottom: `1px solid ${colors[0]}`,
-          boxShadow: `0px 10px 8px 0px ${colors[0]}`
-      } : {}}>
+        <ul
+          className={isMenuOpen ? style.open : ""}
+          style={isMenuOpen ? {
+                  borderBottom: `1px solid ${colors[0]}`,
+                  boxShadow: `0px 10px 8px 0px ${colors[0]}`,
+                } : {}}>
           {navArr.map((item, i) => (
             <li key={i}>
               <NavLink
@@ -82,7 +94,7 @@ export default function Navbar() {
                   padding: "6px 15px",
                   border: "2px solid transparent",
                   borderImage: colors[0]
-                    ? `linear-gradient(to right, ${colors[0]}, ${colors[4]}) 1`
+                    ? `linear-gradient(to right, ${colors[0]} 0%, ${colors[4]} 100%) 1`
                     : "white",
                 }}
               >
