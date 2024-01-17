@@ -54,7 +54,7 @@ export default function Pallette() {
         color: "white",
         borderRadius: 0,
         border: "2px solid transparent",
-        borderImage: "white",
+        borderImage: activeColor[0] ? `linear-gradient(to right, ${activeColor[0]}, ${activeColor[4]}) 1` : "white",
       },
     });
   };
