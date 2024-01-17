@@ -7,7 +7,7 @@ export default function Footer() {
     className={style.footer}
     >
         <p>
-            Colorizer Pallette Generator - Created by Mike Montgomery
+            Colorizer Pallette Generator - Created by Morten&#128640; and Niklas&#128511;
         </p>
         <span>
             Made possible by colormind.io pallette API
