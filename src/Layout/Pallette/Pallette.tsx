@@ -6,14 +6,18 @@ import Clipboard from "../../assets/Clipboard.png"
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
+// Page: Palette
 export default function Pallette() {
-
+  // Destructuring values from the useColors hook
   const { setActive, savedColors, deleteColor, activeColor, deleteAllColors } = useColors();
 
+  // State to manage the visibility of the scroll-to-top button
   const [scrollTopButton, setScrollTopButton] = useState(false);
 
+  // Function to set a color palette as active
   const handleSetActive = (colors: string[]) => {
     setActive(colors)
+    // Display notification
     toast("Color Activated",{
       style: {
         backgroundColor: "#212121", 
@@ -25,8 +29,10 @@ export default function Pallette() {
     })
   }
 
+  // Function to delete a color palette
   const handleDelete = (colors: string[]) => {
     deleteColor(colors)
+    // Display notification
     toast("Color Deleted",{
       style: {
         backgroundColor: "#212121", 
@@ -38,8 +44,10 @@ export default function Pallette() {
     })
   }
 
+  // Function to delete all color palettes
   const handleDeleteAll = () => {
     deleteAllColors();
+    // Display notification
     toast("All Colors Deleted", {
       style: {
         backgroundColor: "#212121",
@@ -51,8 +59,10 @@ export default function Pallette() {
     });
   };
 
+  // Function to copy a color to the clipboard
   const handleCopy = (color: string) => {
     navigator.clipboard.writeText(color)
+    // Display notification
     toast(`Copied ${color} to clipboard`,{
       style: {
         backgroundColor: "#212121", 
@@ -64,16 +74,19 @@ export default function Pallette() {
     })
   }
 
+  // Function to handle scroll events and show/hide the scroll-to-top button
   const handleScroll = () => {
     // Check if the user has scrolled down a certain amount
     const isScrollingDown = window.scrollY > 1500;
     setScrollTopButton(isScrollingDown);
   };
 
+  // Function to scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Effect hook to add and remove scroll event listener
   useEffect(() => {
 
     window.addEventListener("scroll", () => {

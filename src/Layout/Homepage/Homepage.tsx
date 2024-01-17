@@ -6,10 +6,12 @@ import Button from '../../components/Button/Button'
 import { toast } from 'sonner'
 import Clipboard from "../../assets/Clipboard.png"
 
-
+// Page: HomePage
 export default function Homepage() {
+    // Destructuring values from the useColors hook
     const {setColor, currentColors, saveColor, savedColors} = useColors()
 
+    // Function to fetch colors from API
     const fetchData = async () => {
       const url = 'http://colormind.io/api/'
 
@@ -19,22 +21,29 @@ export default function Homepage() {
       })
 
       let { result: data } = await res.json()
+      // Convert RGB colors to hex format
       const hexColors = data.map((color: number[]) => "#" + rgbHex(color[0], color[1], color[2]))
+      // Set fetched colors using setColor hook
       setColor(hexColors)
     }
-    
+
+    // Effect hook to fetch colors when the component mounts
     useEffect(() => {
+      // Check if there are already colors set, if yes, do not fetch
       if(currentColors[0]) return
 
       fetchData()
     }, [])
 
+    // Function to handle fetching new colors
     const handleFetch = () => {
       fetchData()
     }
 
+    // Function to handle saving current colors
     const handleSave = () => {
       saveColor()
+      // Display notification
       toast("Saved color",{
         style: {
           backgroundColor: "#212121", 
@@ -46,8 +55,10 @@ export default function Homepage() {
       })
     }
 
+    // Function to copy a color to the clipboard
     const handleCopy = (color: string) => {
       navigator.clipboard.writeText(color)
+      // Display notification
       toast(`Copied ${color} to clipboard`,{
         style: {
           backgroundColor: "#212121", 

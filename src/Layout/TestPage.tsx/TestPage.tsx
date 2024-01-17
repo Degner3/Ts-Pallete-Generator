@@ -4,8 +4,12 @@ import { useColors } from '../../store/useColors'
 import Faq from '../../components/Faq/Faq'
 import ReviewCard from '../../components/ReviewCard/ReviewCard'
 
+// Page: TestPage
 export default function TestPage() {
+    // Using the useColors hook to get the active color
     const {activeColor} = useColors()
+
+    
   return (
     <div
     className={style.container}

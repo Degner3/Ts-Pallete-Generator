@@ -3,8 +3,9 @@ import { useColors } from "../../store/useColors"
 import style from "./ErrorPage.module.scss"
 import errorpage from "../../assets/error.gif"
 
-
+// Page: ErrorPage
 export const ErrorPage = () => {
+  // Using custom hook useColors to fetch the active color
   const { activeColor } = useColors();
 
   return (
@@ -40,6 +41,8 @@ export const ErrorPage = () => {
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}>the page you are looking for not avaible!</p>
+
+        {/* Button to navigate to the home page */}
         <div
          key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
          className={style.btnHome}>
