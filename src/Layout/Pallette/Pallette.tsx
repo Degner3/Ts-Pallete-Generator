@@ -3,10 +3,14 @@ import Button from "../../components/Button/Button"
 import { useColors } from "../../store/useColors"
 import style from "./Palette.module.scss"
 import Clipboard from "../../assets/Clipboard.png"
+import { useEffect, useState } from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 export default function Pallette() {
 
   const { setActive, savedColors, deleteColor, activeColor, deleteAllColors } = useColors();
+
+  const [scrollTopButton, setScrollTopButton] = useState(false);
 
   const handleSetActive = (colors: string[]) => {
     setActive(colors)
@@ -23,7 +27,7 @@ export default function Pallette() {
 
   const handleDelete = (colors: string[]) => {
     deleteColor(colors)
-    toast("Color Activated",{
+    toast("Color Deleted",{
       style: {
         backgroundColor: "#212121", 
         color: "white",
@@ -59,6 +63,35 @@ export default function Pallette() {
       }
     })
   }
+
+  const handleScroll = () => {
+    // Check if the user has scrolled down a certain amount
+    const isScrollingDown = window.scrollY > 1500;
+    setScrollTopButton(isScrollingDown);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+
+    window.addEventListener("scroll", () => {
+      if(window.screenY > 1500) {
+        setScrollTopButton(true)
+      } else {
+        setScrollTopButton(false)
+      }
+    })
+
+    // Add event listener for scroll
+    window.addEventListener("scroll", handleScroll);
+    
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   
   return (
     <section className={style.content}>
@@ -117,10 +150,13 @@ export default function Pallette() {
           <div className={style.fail}>
             <p>You haven't saved any colors yet :(</p>
           </div>
-          
         )}
-        
       </div>
+      {scrollTopButton && (
+        <div className={style.scrollTopButton}>
+          <Button onClick={scrollToTop}><FaArrowUp /></Button>
+        </div>
+      )}
     </section>
   );
 }
