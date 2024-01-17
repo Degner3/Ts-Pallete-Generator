@@ -17,7 +17,6 @@ export const ErrorPage = () => {
         width: "100%"
       }}>
         <h2
-        key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
         style={{
           background: activeColor[0]
             ? `-webkit-linear-gradient(0deg, ${activeColor[0]} 26.79%, ${activeColor[2]} 49.8%,${activeColor[4]} 70.09%)`
@@ -26,7 +25,6 @@ export const ErrorPage = () => {
           WebkitTextFillColor: "transparent",
         }}>404</h2>
         <h3
-        key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
         style={{
           background: activeColor[0]
             ? `-webkit-linear-gradient(0deg, ${activeColor[0]} 26.79%, ${activeColor[2]} 49.8%,${activeColor[4]} 70.09%)`
@@ -35,7 +33,6 @@ export const ErrorPage = () => {
           WebkitTextFillColor: "transparent",
         }}>Look like you're lost</h3>
         <p
-        key={activeColor ? `colored ${activeColor[0]}` : "not colored"}
         style={{
           background: activeColor[0]
             ? `-webkit-linear-gradient(0deg, ${activeColor[0]} 26.79%, ${activeColor[2]} 49.8%,${activeColor[4]} 70.09%)`
